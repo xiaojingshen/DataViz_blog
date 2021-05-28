@@ -117,7 +117,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img/img01.jpg","my-1st-post_files/anchor-4.2.2/anchor.min.js","my-1st-post_files/bowser-1.9.3/bowser.min.js","my-1st-post_files/distill-2.2.21/template.v2.js","my-1st-post_files/header-attrs-2.8/header-attrs.js","my-1st-post_files/jquery-1.11.3/jquery.min.js","my-1st-post_files/popper-2.6.0/popper.min.js","my-1st-post_files/tippy-6.2.7/tippy-bundle.umd.min.js","my-1st-post_files/tippy-6.2.7/tippy-light-border.css","my-1st-post_files/tippy-6.2.7/tippy.css","my-1st-post_files/tippy-6.2.7/tippy.umd.min.js","my-1st-post_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["img/img01.jpg","img/img02.jpg","img/img03.jpg","img/img04.jpg","img/img05.jpg","img/img06.jpg","img/img07.jpg","img/img08.jpg","img/img09.jpg","img/img10.jpg","img/img11.jpg","img/img12.jpg","img/img13.jpg","img/img14.jpg","img/img15.jpg","img/img16.jpg","my-1st-post_files/anchor-4.2.2/anchor.min.js","my-1st-post_files/bowser-1.9.3/bowser.min.js","my-1st-post_files/distill-2.2.21/template.v2.js","my-1st-post_files/header-attrs-2.8/header-attrs.js","my-1st-post_files/jquery-1.11.3/jquery.min.js","my-1st-post_files/popper-2.6.0/popper.min.js","my-1st-post_files/tippy-6.2.7/tippy-bundle.umd.min.js","my-1st-post_files/tippy-6.2.7/tippy-light-border.css","my-1st-post_files/tippy-6.2.7/tippy.css","my-1st-post_files/tippy-6.2.7/tippy.umd.min.js","my-1st-post_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2098,31 +2098,91 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <div class="d-article">
-<h1 id="overview">1.0 Overview</h1>
-<p>In this article, we will show you how to plot a figure with multiple histograms by using <a href="https://ggplot2.tidyverse.org/"><strong>ggplot2</strong></a> and <strong>ggpubr</strong> packages.</p>
-<h1 id="installing-and-launching-r-packages">2.0 Installing and Launching R Packages</h1>
-<p>Before you get started, you are required:</p>
-<ul>
-<li>to start a new R project, and
-<ul>
-<li>to create a new R Markdown document. To insert a graph <img src="img/img01.jpg" /> Next, you will use the code chunk below to install and launch ggpubr and tidyverse in RStudio.</li>
-</ul></li>
-</ul>
-<h1 id="r-code">R code</h1>
-<p>packages = c(‘ggpubr’, ‘tidyverse’)</p>
-<p>for(p in packages){library if(!require(p, character.only = T)){ install.packages(p) } library(p, character.only = T) }</p>
-<h1 id="importing-and-preparing-the-data-set">3.0 Importing and Preparing The Data Set</h1>
-<p>In this hands-on exercise, the <a href="https://archive.ics.uci.edu/ml/datasets/wine+quality">Wine Quality Data Set</a> of UCI Machine Learning Repository will be used. The data set consists of 13 variables and 6497 observations. For the purpose of this exercise, we have combined the red wine and white wine data into one data file. It is called wine_quality and is in csv file format.</p>
-<h2 id="importing-data">3.1 Importing Data</h2>
-<p>First, let us import the data into R by using read_csv() of readr package.</p>
-<h1 id="r-code-1">R code</h1>
-<p>wine &lt;- read_csv(“data/wine_quality.csv”)</p>
-<p>Notice that beside quality and type, the rest of the variables are numerical and continuous data type.</p>
-<h1 id="univariate-eda-with-histogram">4.0 Univariate EDA with Histogram</h1>
-<p>In the figure below, multiple histograms are plottted by using ggplot() and geom_histogram() of ggplot2 package. Then, ggarrange() of ggpubr package is used to patch these histogram into a single figure to reveal the distribution of the selected variables in the wine quality data sets.</p>
-<h1 id="rcode">Rcode</h1>
-<p>fa &lt;- ggplot(data=wine, aes(x= <code>fixed acidity</code>)) + geom_histogram(bins=20, color=“black”, fill=“light blue”) va &lt;- ggplot(data=wine, aes(x= <code>volatile acidity</code>)) + geom_histogram(bins=20, color=“black”, fill=“light blue”) ca &lt;- ggplot(data=wine, aes(x= <code>citric acid</code>)) + geom_histogram(bins=20, color=“black”, fill=“light blue”) rs &lt;- ggplot(data=wine, aes(x= <code>residual sugar</code>)) + geom_histogram(bins=20, color=“black”, fill=“light blue”) ch &lt;- ggplot(data=wine, aes(x= <code>chlorides</code>)) + geom_histogram(bins=20, color=“black”, fill=“light blue”) fSO2 &lt;- ggplot(data=wine, aes(x= <code>free sulfur dioxide</code>)) + geom_histogram(bins=20, color=“black”, fill=“light blue”) tSO2 &lt;- ggplot(data=wine, aes(x= <code>total sulfur dioxide</code>)) + geom_histogram(bins=20, color=“black”, fill=“light blue”) density &lt;- ggplot(data=wine, aes(x= density)) + geom_histogram(bins=20, color=“black”, fill=“light blue”) pH &lt;- ggplot(data=wine, aes(x= pH)) + geom_histogram(bins=20, color=“black”, fill=“light blue”) sulphates &lt;- ggplot(data=wine, aes(x= sulphates)) + geom_histogram(bins=20, color=“black”, fill=“light blue”) alcohol &lt;- ggplot(data=wine, aes(x= alcohol)) + geom_histogram(bins=20, color=“black”, fill=“light blue”)</p>
-<p>ggarrange(fa, va, ca, rs, ch, fSO2, tSO2, density, pH, sulphates, alcohol, ncol = 4, nrow = 3)</p>
+<h1 id="critique-of-visualisation">1.0 Critique of Visualisation</h1>
+<p>The original visualisation can be seen below. <img src="img/img01.jpg" /></p>
+<h3 id="clarity">1.1 Clarity</h3>
+<ol type="1">
+<li>It is hard to compare countries’ performance across six separate charts shared with different scales in y-axis.<br />
+</li>
+<li>For x-axis with title month of period, but we cannot tell each month performance clearly in the charts.<br />
+</li>
+<li>For Japan, there is only ‘2020’ in the x-axis, which is not align with other charts.<br />
+</li>
+<li>The title is misleading with ‘top trading’, we do not know the rank of top trading is by export or import or the total amount. Also, the title as ‘six countries’ but some of them are only regions instead of countries.<br />
+</li>
+<li>In raw data, the trade amount is with unit as ‘thousand dollars’, the chart did not mention.<br />
+</li>
+</ol>
+<h3 id="aesthetic">1.2 Aesthetic</h3>
+<ol type="1">
+<li>The tick line for y-axis is not obvious.<br />
+</li>
+<li>There are two y-axes with different scale, it’ s not possible to put them together to do comparison.<br />
+</li>
+<li>To show the time-serious trend line instead of the area chart which is hard to see the trade amount changing along the time.<br />
+</li>
+<li>There is clear indication of data source stated in the chart.</li>
+<li>There is no clear indication of month in the y-axis.<br />
+</li>
+<li>Each chart is too narrow to show the message of monthly data.<br />
+</li>
+</ol>
+<h1 id="alternative-design">2.0 Alternative design</h1>
+<p><img src="img/img02.jpg" /> <img src="img/img03.jpg" /></p>
+<ol type="1">
+<li>In order to clearly compare difference between 2019 and 2020 and in export and import value and trend chart, 2 individual charts as show in the initial visualization.<br />
+</li>
+<li>All charts with title and subtitle to explain key words and definitions will be showing in graph.<br />
+</li>
+<li>Y-axis are unified to do comparison in the same scale for different years and different trading methods.<br />
+</li>
+</ol>
+<h1 id="proposed-visualization">3.0 Proposed Visualization</h1>
+<p>Data Visualization can be found in Tableau Public Server: <a href="https://public.tableau.com/app/profile/xiaojing.shen/viz/dataviz-1/Dashboard1">Dashboard</a></p>
+<h1 id="step-by-step-guide">4.0 Step-by-step Guide</h1>
+<h3 id="data-preparation">4.1 Data preparation</h3>
+<p>Select only data for 6 regions, Filter variables = ‘Hongkong, Mainland China, Japan, Malaysia, Taiwan, US’. Select only year 2019-2020 for import and export data sets and paste into a new sheet using Microsoft Excel. <img src="img/img04.jpg" /></p>
+<h3 id="import-the-two-data-sets-into-tableau.">4.2 Import the two data sets into Tableau.</h3>
+<p>Connection: Choose Extract to allow them to go public</p>
+<p><img src="img/img05.jpg" /> <img src="img/img06.jpg" /></p>
+<h3 id="the-first-chart-is-showing-the-difference-between-2019-and-2020.-left-chart-as-import">4.3 The first chart is showing the difference between 2019 and 2020. Left chart as import</h3>
+<p>and right chart as export. (1) Change the data type for [Year] from number to date&amp;time <img src="img/img07.jpg" /></p>
+<ol start="2" type="1">
+<li><p>Columns: Drug [Export] and [Import] value</p></li>
+<li><p>Rows: Region <img src="img/img08.jpg" /></p></li>
+<li><p>Color: Year Edit color as opacity 66% <img src="img/img09.jpg" /></p></li>
+<li><p>Edit x- axis, to make two axis (export and import) face to each other, by reversing the scale of export.</p></li>
+</ol>
+<p><img src="img/img10.jpg" /></p>
+<ol start="6" type="1">
+<li>To make year 2019 and 2020 stack to each other to compare easily, need to off the stack marks. <img src="img/img11.jpg" /></li>
+</ol>
+<p>Final look <img src="img/img12.jpg" /></p>
+<h3 id="the-second-chart-is-showing-the-trend-between-2019-and-2020.">4.4 The second chart is showing the trend between 2019 and 2020.</h3>
+<p><img src="img/img13.jpg" /></p>
+<ol type="1">
+<li>Columns: Region, Month Rows: Sum by month Color: Export or Import</li>
+</ol>
+<p><img src="img/img14.jpg" /></p>
+<ol start="2" type="1">
+<li>Date change to Month</li>
+</ol>
+<p><img src="img/img15.jpg" /></p>
+<h3 id="create-new-dashboard">4.5 Create new dashboard</h3>
+<p><img src="img/img16.jpg" /></p>
+<h1 id="major-observations">5.0 Major Observations</h1>
+<ol type="1">
+<li>Mainland China has largest value among the 6 regions for export and import in 2019 and 2020.<br />
+</li>
+<li>Taiwan and Hong Kong both import and export are increasing from 2019 to 2020, with a continuous up trend.<br />
+</li>
+<li>For Malaysia, there is a sharp decline in both import and export in April 2020.From news, Statistician chief Datuk Seri Dr Mohd Uzir Mahidin said the decrease was due to the shutdown of most of the national economic sectors since the enforcement of the Movement Control Order (MCO) on March 18 due to the Covid-19 pandemic. (Sharp decline in Malaysia’s exports | New Straits Times, 2021)<br />
+</li>
+<li>Hong Kong has the second highest in export value but the last for the import value. The Import value is only about 1/10 of Mainland China.<br />
+</li>
+<li>Japan Import and export value are almost equivalent in 2019 and 2020, which is relatively stable.<br />
+</li>
+</ol>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
