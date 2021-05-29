@@ -22,17 +22,19 @@ The original visualisation can be seen below.
 ### 1.1	Clarity
 (1)	It is hard to compare countries’ performance across six separate charts shared with different scales in y-axis.\
 (2)	For x-axis with title month of period, but we cannot tell each month performance clearly in the charts.\
-(3)	For Japan, there is only ‘2020’ in the x-axis, which is not align with other charts.\
-(4)	The title is misleading with ‘top trading’, we do not know the rank of top trading is by export or import or the total amount. Also, the title as ‘six countries’ but some of them are only regions instead of countries.\
-(5)	In raw data, the trade amount is with unit as ‘thousand dollars’, the chart did not mention.\
+(3)	For Japan, there is only a year ‘2020’ at the x-axis, which is not align with other charts.\
+(4)	The title is misleading with ‘top trading’, we do not know the rank of top trading is by export or import or the total amount. \
+(5)The title as ‘six countries’ but some of them are only regions instead of countries.\
+(6)	In raw data, the trade amount is with unit as ‘thousand dollars’, the chart/title did not mention.\
 
 ### 1.2	Aesthetic
 (1)	The tick line for y-axis is not obvious.\
-(2)	There are two y-axes with different scale, it’ s not possible to put them together to do comparison.\
+(2)	For each chart, there are two y-axes for export and import with different scale, it’ s not possible to put them together to do comparison.\
 (3)	To show the time-serious trend line instead of the area chart which is hard to see the trade amount changing along the time.\
-(4)	There is clear indication of data source stated in the chart.
+(4)	There is no clear indication of data source stated in the chart.
 (5)	There is no clear indication of month in the y-axis.\
 (6)	Each chart is too narrow to show the message of monthly data.\
+(7) The colors of export and import are not distinguished.
 
 # 2.0	Alternative design
 ![](img/img02.jpg) 
@@ -63,12 +65,13 @@ Connection: Choose Extract to allow them to go public
  
 
 
-### 4.3	The first chart is showing the difference between 2019 and 2020. Left chart as import 
-and right chart as export.
+### 4.3	The first chart is showing the difference between 2019 and 2020. 
+To make a pyramid chart for import and export.Left chart as import and right chart as export.
+
 (1)	Change the data type for [Year] from number to date&time
    ![](img/img07.jpg) 
    
-(2)	Columns: Drug [Export] and [Import] value
+(2)	Columns: Put [Export] and [Import] value
 
   
 
@@ -112,11 +115,15 @@ Color: Export or Import
 
 
 # 5.0	Major Observations
-(1) Mainland China has largest value among the 6 regions for export and import in 2019 and 2020.\
-(2) Taiwan and Hong Kong both import and export are increasing from 2019 to 2020, with a continuous up trend.\
-(3) For Malaysia, there is a sharp decline in both import and export in April 2020.From news, Statistician chief Datuk Seri Dr Mohd Uzir Mahidin said the decrease was due to the shutdown of most of the national economic sectors since the enforcement of the Movement Control Order (MCO) on March 18 due to the Covid-19 pandemic. (Sharp decline in Malaysia's exports | New Straits Times, 2021)\
-(4) Hong Kong has the second highest in export value but the last for the import value. The Import value is only about 1/10 of Mainland China.\
-(5) Japan Import and export value are almost equivalent in 2019 and 2020, which is relatively stable.\
+(1) Mainland China is one of the major trade partners with Singapore which has largest value among the 6 regions for both export and import in year 2019 and year 2020.\
+(2) For Malaysia, there is a sharp decline in both import and export in April 2020.From news, Statistician chief Datuk Seri Dr Mohd Uzir Mahidin said the decrease was due to the shutdown of most of the national economic sectors since the enforcement of the Movement Control Order (MCO) on March 18 due to the Covid-19 pandemic. [Sharp decline in Malaysia's exports | New Straits Times, 2021]
+(https://www.nst.com.my/business/2020/06/597855/sharp-decline-malaysias-exports)\
+(3) There is a sharp decrease in May 2020 for US import value. The declines due to the impact of COVID-19, as many businesses were operating at limited capacity or ceased operations completely, and the movement of travelers across borders was restricted.
+[U.S. International Trade in Goods and Services, May 2020](https://www.bea.gov/news/2020/us-international-trade-goods-and-services-may-2020)\
+
+(4) Taiwan and Hong Kong both import and export are increasing from 2019 to 2020, with a continuous increasing trend.\
+(5) Hong Kong has the second highest in export value but the last for the import value. The Import value is only about 1/10 of Mainland China.\
+(6) Japan Import and export value are almost equivalent in 2019 and 2020, which is relatively stable.\
 
 
 
