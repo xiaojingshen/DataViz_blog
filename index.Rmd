@@ -1,5 +1,5 @@
 ---
-title: "DataViz Blog"
+title: "ISSS603 Blog"
 site: distill::distill_website
 listing: posts
 ---

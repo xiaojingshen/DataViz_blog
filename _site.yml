@@ -1,7 +1,7 @@
-name: "DataViz_blog"
-title: "DataViz Makeover"
+name: "ISSS603_blog"
+title: "ISSS603"
 description: |
-  DataViz Blog
+  ISSS603 Blog
 output_dir: "_site"
 navbar:
   right:
