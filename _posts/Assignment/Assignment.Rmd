@@ -202,7 +202,7 @@ long|Numerical|24.87468932
 To investigate the most popular locations over different time period, I used heat map by plotting locations at x-axis and hours of time stamp in the y-axis , colored by count of transactions.\
 When plot the Calendar Heat map, we can see the high-density points are fall in 7 to 8 am, 12 to 1pm and 19 to 20 pm. \
 
-```{r echo=TRUE, fig.height=6}
+```{r echo=TRUE, fig.height=6, tidy=FALSE}
 # Library
 library(ggplot2)
 
@@ -210,7 +210,9 @@ df_hmap <- data.frame(credit_card_record$hour, credit_card_record$location)
 colnames(df_hmap) <- c("hour", "location")
 
 # Heatmap 
-ggplot(df_hmap, aes(x=hour , y=location)) + geom_bin2d() + scale_fill_gradient(low="lightblue", high="black") + scale_x_continuous("hour", labels = as.character(credit_card_record$hour), breaks = credit_card_record$hour)
+ggplot(df_hmap, aes(x=hour , y=location)) + 
+  geom_bin2d() + scale_fill_gradient(low="lightblue", high="black") + 
+  scale_x_continuous("hour", labels = as.character(credit_card_record$hour), breaks = credit_card_record$hour)
 
 ```
 
@@ -224,8 +226,10 @@ From dinner time 7 pm to 8 pm, most people went to dinning venues to have dinner
 
 This picture shows a pattern of the driving paths of all employees from 3 am to 5 am. Generally there is no shops open so early in the morning, we can refer to the employee which has credit card transactions in this time period and date , to match the credit card data with gps data. \
 
-```{r echo=TRUE, fig.height=6, collapse=TRUE}
-gps_Morning_view <- gps_sf %>% mutate(Morning_timestamp = hms::as_hms(gps_sf$Timestamp)) %>% filter(Morning_timestamp >= hms::as_hms('03:00:00'), Morning_timestamp <= hms::as_hms('05:00:00'))
+```{r echo=TRUE, fig.height=6, collapse=TRUE, tidy=FALSE}
+gps_Morning_view <- gps_sf %>% 
+  mutate(Morning_timestamp = hms::as_hms(gps_sf$Timestamp)) %>% 
+  filter(Morning_timestamp >= hms::as_hms('03:00:00'), Morning_timestamp <= hms::as_hms('05:00:00'))
 ```
 
 ```{r echo=TRUE, fig.height=6}
@@ -255,7 +259,7 @@ There are some cards with high transaction amount. **L8477**has 4 transactions a
 
  **L7761** has transaction at 9am at Abila Airport , 10 am at Stewart and Sons Fabrication , 12am at Nationwide Refinery repeatedly on 7th Jan, 9th Jan, 14th Jan and 16th Jan. \
 
-```{r echo=TRUE, fig.ext=TRUE}
+```{r echo=TRUE, fig.ext=TRUE, tidy=FALSE}
 # Library
 library(ggplot2)
 
@@ -263,7 +267,10 @@ df_price_map <- data.frame(credit_card_record$day, credit_card_record$last4ccnum
 colnames(df_price_map) <- c("day", "credit_card_number", "price")
 
 # Heatmap 
-ggplot(df_price_map, aes(x=day , y=credit_card_number, fill=price)) + geom_tile() + scale_fill_gradient(low="lightgreen", high="black") + scale_x_continuous("day", labels = as.character(credit_card_record$day), breaks = credit_card_record$day) + scale_y_continuous("credit_card_number", labels = as.character(credit_card_record$last4ccnum), breaks = credit_card_record$last4ccnum )
+ggplot(df_price_map, aes(x=day , y=credit_card_number, fill=price)) + 
+  geom_tile() + scale_fill_gradient(low="lightgreen", high="black") + 
+  scale_x_continuous("day", labels = as.character(credit_card_record$day), breaks = credit_card_record$day) +
+  scale_y_continuous("credit_card_number", labels = as.character(credit_card_record$last4ccnum), breaks = credit_card_record$last4ccnum )
 ```
 
 
@@ -275,14 +282,17 @@ ggplot(df_price_map, aes(x=day , y=credit_card_number, fill=price)) + geom_tile(
 **5407** has spent about 150 dollars on 13th Jan.
 **3834** , **8332**, and **9551** have spent about 150 dollars in the morning on 19th Jan.\
 
-```{r echo=TRUE, fig.ext=TRUE, fig.height=11}
+```{r echo=TRUE, fig.ext=TRUE, fig.height=11, tidy=FALSE}
 # Library
 library(ggplot2)
 df_hour_price_map <- data.frame(credit_card_record$hour, credit_card_record$last4ccnum, credit_card_record$price)
 colnames(df_hour_price_map) <- c("hour", "credit_card_number", "price")
 
 # Heatmap 
-ggplot(df_hour_price_map, aes(x=hour , y=credit_card_number, fill=price)) + geom_tile() + scale_fill_gradient(low="lightblue", high="black") + scale_x_continuous("hour", labels = as.character(credit_card_record$hour), breaks = credit_card_record$hour) + scale_y_continuous("credit_card_number", labels = as.character(credit_card_record$last4ccnum), breaks = credit_card_record$last4ccnum )
+ggplot(df_hour_price_map, aes(x=hour , y=credit_card_number, fill=price)) + 
+  geom_tile() + scale_fill_gradient(low="lightblue", high="black") + 
+  scale_x_continuous("hour", labels = as.character(credit_card_record$hour), breaks = credit_card_record$hour) +
+  scale_y_continuous("credit_card_number", labels = as.character(credit_card_record$last4ccnum), breaks = credit_card_record$last4ccnum )
 ```
 
 
@@ -290,8 +300,11 @@ ggplot(df_hour_price_map, aes(x=hour , y=credit_card_number, fill=price)) + geom
 
 Nils Calixto drive from Gastech to home at 00:09 on 16th Jan. \
 
-```{r echo=TRUE, fig.height=6, collapse=TRUE}
-gps_Nils_view <- gps_sf %>% mutate(Nils_timestamp = hms::as_hms(gps_sf$Timestamp)) %>% filter(id == 1) %>% filter(Nils_timestamp >= hms::as_hms('00:00:00'), Nils_timestamp <= hms::as_hms('02:00:00'))
+```{r echo=TRUE, fig.height=6, collapse=TRUE, tidy=FALSE}
+gps_Nils_view <- gps_sf %>% 
+  mutate(Nils_timestamp = hms::as_hms(gps_sf$Timestamp)) %>% 
+  filter(id == 1) %>% 
+  filter(Nils_timestamp >= hms::as_hms('00:00:00'), Nils_timestamp <= hms::as_hms('02:00:00'))
 ```
 
 ```{r echo=TRUE, fig.height=6}
@@ -309,8 +322,11 @@ tm_shape(bgmap) +
 
 Marin Onda driving from one place to home on 1/11 at 12:22. \
 
-```{r echo=TRUE, fig.height=6, collapse=TRUE}
-gps_Marin_view <- gps_sf %>% mutate(Marin_timestamp = hms::as_hms(gps_sf$Timestamp)) %>% filter(id == 26) %>% filter(Marin_timestamp >= hms::as_hms('00:00:00'), Marin_timestamp <= hms::as_hms('02:00:00'))
+```{r echo=TRUE, fig.height=6, collapse=TRUE, tidy=FALSE}
+gps_Marin_view <- gps_sf %>% 
+  mutate(Marin_timestamp = hms::as_hms(gps_sf$Timestamp))%>% 
+  filter(id == 26) %>% 
+  filter(Marin_timestamp >= hms::as_hms('00:00:00'), Marin_timestamp <= hms::as_hms('02:00:00'))
 ```
 
 ```{r echo=TRUE, fig.height=6}
@@ -338,8 +354,11 @@ Hypothesis: Their destination is at Isia Vann's home. \
 
 (1) gps for **Loreto Bodrogi** on 1/7, 1/9  at 3:00 to 5:00. \ 
 
-```{r echo=TRUE, fig.height=6, collapse=TRUE}
-gps_Lorento_view <- gps_sf %>% mutate(Lorento_timestamp = hms::as_hms(gps_sf$Timestamp)) %>% filter(id == 15) %>% filter(Lorento_timestamp >= hms::as_hms('03:00:00'), Lorento_timestamp <= hms::as_hms('05:00:00'))
+```{r echo=TRUE, fig.height=6, collapse=TRUE, tidy=FALSE}
+gps_Lorento_view <- gps_sf %>% 
+  mutate(Lorento_timestamp = hms::as_hms(gps_sf$Timestamp)) %>% 
+  filter(id == 15) %>% 
+  filter(Lorento_timestamp >= hms::as_hms('03:00:00'), Lorento_timestamp <= hms::as_hms('05:00:00'))
 ```
 
 ```{r echo=TRUE, fig.height=6}
@@ -358,8 +377,10 @@ tm_shape(bgmap) +
 
 (2) gps for **Isia Vann** on 1/11 at 3:00 to 5:00. \
 
-```{r echo=TRUE, fig.height=6, collapse=TRUE}
-gps_Isia_view <- gps_sf %>% mutate(Isia_timestamp = hms::as_hms(gps_sf$Timestamp)) %>% filter(id == 16) %>% filter(Isia_timestamp >= hms::as_hms('03:00:00'), Isia_timestamp <= hms::as_hms('05:00:00'))
+```{r echo=TRUE, fig.height=6, collapse=TRUE, tidy=FALSE}
+gps_Isia_view <- gps_sf %>% 
+  mutate(Isia_timestamp = hms::as_hms(gps_sf$Timestamp)) %>% 
+  filter(id == 16) %>% filter(Isia_timestamp >= hms::as_hms('03:00:00'), Isia_timestamp <= hms::as_hms('05:00:00'))
 ```
 
 ```{r echo=TRUE, fig.height=6}
@@ -376,8 +397,11 @@ tm_shape(bgmap) +
 
 (3) gps for **Minke Mies** on 1/9, 1/14 at 3:00 to 5:00. \ 
 
-```{r echo=TRUE, fig.height=6, collapse=TRUE}
-gps_Minke_view <- gps_sf %>% mutate(Minke_timestamp = hms::as_hms(gps_sf$Timestamp)) %>% filter(id == 24) %>% filter(Minke_timestamp >= hms::as_hms('03:00:00'), Minke_timestamp <= hms::as_hms('05:00:00'))
+```{r echo=TRUE, fig.height=6, collapse=TRUE, tidy=FALSE}
+gps_Minke_view <- gps_sf %>% 
+  mutate(Minke_timestamp = hms::as_hms(gps_sf$Timestamp)) %>% 
+  filter(id == 24) %>% 
+  filter(Minke_timestamp >= hms::as_hms('03:00:00'), Minke_timestamp <= hms::as_hms('05:00:00'))
 ```
 
 ```{r echo=TRUE, fig.height=6}
@@ -395,8 +419,11 @@ tm_shape(bgmap) +
 
 (4) gps for **Hennie Osvaldo** on 1/14 at 3:00 to 5:00. \
 
-```{r echo=TRUE, fig.height=6, collapse=TRUE}
-gps_Hennie_view <- gps_sf %>% mutate(Hennie_timestamp = hms::as_hms(gps_sf$Timestamp)) %>% filter(id == 21) %>%filter(Hennie_timestamp >= hms::as_hms('03:00:00'), Hennie_timestamp <= hms::as_hms('05:00:00'))
+```{r echo=TRUE, fig.height=6, collapse=TRUE, tidy=FALSE}
+gps_Hennie_view <- gps_sf %>% 
+  mutate(Hennie_timestamp = hms::as_hms(gps_sf$Timestamp)) %>% 
+  filter(id == 21) %>%
+  filter(Hennie_timestamp >= hms::as_hms('03:00:00'), Hennie_timestamp <= hms::as_hms('05:00:00'))
 
 ```
 
